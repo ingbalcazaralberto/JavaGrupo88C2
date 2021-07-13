@@ -1,10 +1,11 @@
 public class App {
 
-    private String nombre;
+    /*private String nombre;
     private int identificacion;
     private double estatura;
     private double peso;
-    private char sexo;
+    private char sexo;*/
+    
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
         int resultado=45+12;
