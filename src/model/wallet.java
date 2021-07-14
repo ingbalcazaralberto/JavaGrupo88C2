@@ -13,7 +13,7 @@ public class Wallet {
 
     private int saldo;    
     private boolean tieneLimite;
-
+  
     public Wallet() {
         super();
         saldo = 0;
@@ -52,6 +52,24 @@ public class Wallet {
             saldo -= valor;
             return "Transcción exitosa";
         }
+    }
+
+    public String bearkLimits(){
+    
+        if ((tieneLimite) && (saldo>=CAPACIDAD_MAXIMA-100000)){
+            tieneLimite = !tieneLimite;
+            return "Tu cuenta ya no tiene limites";
+        }else if (tieneLimite){
+            return "Te hacen falta "+((CAPACIDAD_MAXIMA-100000)-saldo);
+        }else{
+            return "Tu cuenta ya esta configurada sin limites";
+        }
+
+        
+    }
+
+    public void tranferMoney(Wallet tansferecnia,int valor){
+
     }
 
     public int getSaldo(){
