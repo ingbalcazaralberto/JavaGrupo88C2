@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /*
 Transferir dinero, para esta funcionalidad se recibe una instancia (objeto) de la clase Wallet como parametro y un valor, 
 con lo cual se debe retirar dinero de la wallet (instancia) que llama al metodo y consignarlo en la instancia que llega por parametro
@@ -13,11 +15,14 @@ public class Wallet {
 
     private int saldo;    
     private boolean tieneLimite;
+    private int meta;
+    private ArrayList<Transaction> transactions;
   
     public Wallet() {
         super();
         saldo = 0;
-        tieneLimite = true;        
+        tieneLimite = true; 
+        transactions = new ArrayList<>();
     }    
 
     public String saveMoney(int valor) {
@@ -35,10 +40,10 @@ public class Wallet {
         else 
         {
         saldo+=valor;
+        Transaction transactionEntry = new Transaction(valor,"hoy",1);
+        transactions.add(transactionEntry); 
         return "Transacción exitosa!";
         }
-        
-
     }
 
     public String takeMoney(int valor){
@@ -50,6 +55,8 @@ public class Wallet {
         } 
         else{
             saldo -= valor;
+            Transaction transactionExit = new Transaction(valor,"hoy",2);
+            transactions.add(transactionExit);             
             return "Transcción exitosa";
         }
     }
@@ -72,8 +79,23 @@ public class Wallet {
 
     }
 
+    public String establecerMeta(int valor){
+        meta = valor;
+        return "Meta establecida";
+    }
+
+    public boolean verificarMeta(){
+        return meta>0;
+    }
+
     public int getSaldo(){
         return saldo;
+    }
+
+    public void getBalance(){
+        for (Transaction transaction : transactions) {
+            System.out.println(transaction);
+        }
     }
 
     

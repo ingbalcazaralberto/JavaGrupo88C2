@@ -9,10 +9,15 @@ public class UserView {
         System.out.println(cliente1.getNombre());
         System.out.println(cliente2.getNombre());
         String response = cliente1.getWallet().saveMoney(100000);
-        System.out.println(response);  
+        cliente1.getWallet().takeMoney(20000);
+        cliente1.getWallet().takeMoney(30000);
+        cliente1.getWallet().saveMoney(10000);
+        cliente1.getWallet().saveMoney(5000);
+        //System.out.println(response);  
         //System.out.println(cliente1.getWallet().getSaldo());       
         //System.out.println(cliente2.getWallet().getSaldo());
-        System.out.println(cliente1.comparerWallet(cliente2.getWallet()));
+        //System.out.println(cliente1.comparerWallet(cliente2.getWallet()));
+        cliente1.getWallet().getBalance();
     }
 }
 
